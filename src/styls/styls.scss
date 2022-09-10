@@ -1,0 +1,51 @@
+@use "variables";
+@font-face {
+    font-family: "iranSans";
+    src: url(../accets/fonts/AIranianSans.ttf) format('woff');
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'iranSans';
+}
+
+
+.card{
+    border:1px solid variables.$color-gray-light;
+    border-radius: 5px;
+    width:445;
+    // height: 168;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    .image_card{
+        width:136px;
+        height:136px;
+    }
+    .card_content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title_card{
+            color: variables.$color-text-black;
+            font-size: variables.$font-size-16;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .card-details{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap:15px;
+            .price_card{
+                color: variables.$color-text-gray;
+                font-size: variables.$font-size-14;
+            }
+            .text_card{
+                color: variables.$color-text-gray;
+                font-size: variables.$font-size-12;
+            }
+        }
+    }
+    
+}
