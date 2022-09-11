@@ -1,4 +1,5 @@
 @use "variables";
+// @use "mixin";
 @font-face {
     font-family: "iranSans";
     src: url(../accets/fonts/AIranianSans.ttf) format('woff');
@@ -10,12 +11,14 @@ body{
     font-family: 'iranSans';
 }
 
-
-.card{
+@mixin border($width:445px){
     border:1px solid variables.$color-gray-light;
     border-radius: 5px;
-    width:445;
-    // height: 168;
+    width: $width;
+}
+
+.card{
+    @include border;
     padding: 8px;
     display: flex;
     justify-content: space-between;
@@ -54,4 +57,24 @@ body{
     justify-content: center;
     align-items: baseline;
     gap:15px;
+}
+
+.container_search_box{
+    @include border($width:400px);
+    background-color: variables.$color-gray-lighter;
+    padding:6px 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap:5px;
+    .search_box{
+        border:none;
+        color: variables.$color-text-gray-light;
+        background-color: variables.$color-gray-lighter;
+        &::placeholder{
+            color:variables.$color-text-gray-light;
+            font-weight: bolder;
+        }
+    }
+    
 }
