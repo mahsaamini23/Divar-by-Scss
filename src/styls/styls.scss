@@ -21,8 +21,22 @@ body{
         width: 1px;
         color:variables.$color-gray-light;
         style: solid;
-    };
-    
+    }; 
+}
+@mixin style($justify-content:flex-start , $align-items:baseline){
+    display:flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+@mixin searchBox($width:200px , $background-color:variables.$color-gray-lighter){
+    width:$width;
+    border:none;
+    color: variables.$color-text-gray-light;
+    background-color: $background-color;
+    &::placeholder{
+        color:variables.$color-text-gray-light;
+        font-weight: bolder;
+    }
 }
 @mixin button($padding:10px 10px){
     color:variables.$color-white;
@@ -45,11 +59,11 @@ body{
 .nav{
     width:100%;
     display:flex;
-    // justify-content: space-around;
     align-content: center;
     align-items: baseline;
     padding: 12px 0  8px 0 ;
     border-bottom: 1.5px solid variables.$color-gray-light;
+    background-color: variables.$color-white;
     position:fixed;
     top: 0;
     .logo_box{
@@ -72,15 +86,12 @@ body{
         margin-left: 45px !important;
     }
     .container_icon{
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
+        @include style;
         gap:8px;
         margin-left: 35px;
         .name{
             font-size: variables.$font-size-14;
             color:variables.$color-text-gray;
-            
         }
     }
     .categories_menu{
@@ -110,14 +121,7 @@ body{
         margin-left: 155px;
         border: none;
         .search_box{
-            width:200px;
-            border:none;
-            color: variables.$color-text-gray-light;
-            background-color: variables.$color-gray-lighter;
-            &::placeholder{
-                color:variables.$color-text-gray-light;
-                font-weight: bolder;
-            }
+            @include searchBox;
         }
     }
     .support{
@@ -154,15 +158,58 @@ main{
     }
 
     .menu_item{
-        display: flex;
-        justify-content: flex-start;
-        align-items: baseline;
+        @include style;
         gap:10px;
         line-height: 10px;
         font-size: variables.$font-size-14;
         color:variables.$color-text-gray;
-
     }
+}
+
+.item_details{
+    @include style;
+    @include borderBottom();
+    flex-direction: column;
+    padding:15px 0  20px 0;
+    gap:10px;
+    
+    .icon_details{
+        @include style;
+        gap:5px;
+        font-size: variables.$font-size-12;
+        color:variables.$color-text-black;
+    }
+    .search_details{
+        @include style;
+        @include border($width:200px);
+        gap:5px;
+        justify-content: center;
+        background-color: variables.$color-white;
+        padding:5px 0px;
+        color:variables.$color-text-gray;
+        .search_place{
+            @include searchBox($width:150px, $background-color:variables.$color-white);
+        }
+    }
+}
+
+.item_minAndMix{
+    @include style;
+    gap:10px;
+    color:variables.$color-text-gray;
+    font-size: variables.$font-size-12;
+    .minAndMix{
+        @include style($align-items:center);
+        flex-direction: column;
+        .search_minAndMix{
+            @include style($justify-content:space-between);
+            .search_details{
+                @include searchBox($width:100px);
+            }
+        }
+        
+    }
+
 }
 
 
