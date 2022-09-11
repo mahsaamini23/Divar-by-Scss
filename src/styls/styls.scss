@@ -16,6 +16,13 @@ body{
     border-radius: 5px;
     width: $width;
 }
+@mixin button($padding:10px 10px){
+    color:variables.$color-white;
+    background-color: variables.$color-primary;
+    padding:$padding;
+    border:none;
+    border-radius: 5px;
+}
 
 .card{
     @include border;
@@ -78,3 +85,10 @@ body{
     }
     
 }
+
+
+    .btn{
+        @include button($padding: 12px 25px);
+        font-size: variables.$font-size-14;
+        font-weight: bold;
+    }
