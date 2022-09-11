@@ -23,15 +23,27 @@ body{
     border:none;
     border-radius: 5px;
 }
+@mixin btn(){
+    border:none;
+    background-color: variables.$color-white;
+    color:variables.$color-text-gray;
+}
+@mixin link($fontSize:14px){
+    text-decoration: none;
+    color:variables.$color-text-gray;
+    font-size:$fontSize ;
+}
 
 .nav{
+    width:100%;
     display:flex;
     // justify-content: space-around;
     align-content: center;
     align-items: baseline;
     padding: 12px 0  8px 0 ;
     border-bottom: 1.5px solid variables.$color-gray-light;
-
+    position:fixed;
+    top: 0;
     .logo_box{
         display: flex;
         align-self: center;
@@ -48,28 +60,49 @@ body{
             background-color: variables.$color-gray-light;
         }
     }
+    .ml{
+        margin-left: 45px !important;
+    }
     .container_icon{
         display: flex;
         justify-content: center;
         align-items: baseline;
-        gap:15px;
-        margin-left: 40px;
+        gap:8px;
+        margin-left: 35px;
         .name{
             font-size: variables.$font-size-14;
             color:variables.$color-text-gray;
+            
         }
     }
+    .categories_menu{
+        @include btn;
+        display: flex;
+        align-content: space-between;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        .categories{
+            font-family: "iranSans";
+            font-size: variables.$font-size-14;
+            width:55px;
+            padding-left: 10px;
+        }
+    }
+
+    
     .container_search_box{
-        @include border($width:400px);
+        @include border($width:450px);
         background-color: variables.$color-gray-lighter;
-        padding:10px;
+        padding:11px;
         display: flex;
         justify-content: flex-start;
         align-items: baseline;
         gap:15px;
-        margin-left: 200px;
+        margin-left: 155px;
         border: none;
         .search_box{
+            width:200px;
             border:none;
             color: variables.$color-text-gray-light;
             background-color: variables.$color-gray-lighter;
@@ -79,12 +112,19 @@ body{
             }
         }
     }
+    .support{
+        .support_link{
+            @include link;
+        }
+        margin-left: 35px;
+    }
     .btn{
         @include button($padding: 12px 25px);
         font-size: variables.$font-size-14;
         font-weight: bold;
     }
 }
+
 
 .card{
     @include border;
