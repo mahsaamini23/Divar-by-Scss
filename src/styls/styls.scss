@@ -24,6 +24,68 @@ body{
     border-radius: 5px;
 }
 
+.nav{
+    display:flex;
+    // justify-content: space-around;
+    align-content: center;
+    align-items: baseline;
+    padding: 12px 0  8px 0 ;
+    border-bottom: 1.5px solid variables.$color-gray-light;
+
+    .logo_box{
+        display: flex;
+        align-self: center;
+        margin:0 25px;
+        .logo{
+            width:50px;
+            height:45px;  
+            padding:0 15px; 
+        }
+        .line{
+            align-self: center;
+            width: 1px;
+            height: 25px;
+            background-color: variables.$color-gray-light;
+        }
+    }
+    .container_icon{
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap:15px;
+        margin-left: 40px;
+        .name{
+            font-size: variables.$font-size-14;
+            color:variables.$color-text-gray;
+        }
+    }
+    .container_search_box{
+        @include border($width:400px);
+        background-color: variables.$color-gray-lighter;
+        padding:10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap:15px;
+        margin-left: 200px;
+        border: none;
+        .search_box{
+            border:none;
+            color: variables.$color-text-gray-light;
+            background-color: variables.$color-gray-lighter;
+            &::placeholder{
+                color:variables.$color-text-gray-light;
+                font-weight: bolder;
+            }
+        }
+    }
+    .btn{
+        @include button($padding: 12px 25px);
+        font-size: variables.$font-size-14;
+        font-weight: bold;
+    }
+}
+
 .card{
     @include border;
     padding: 8px;
@@ -59,36 +121,8 @@ body{
     }
 }
 
-.container_icon{
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    gap:15px;
-}
 
-.container_search_box{
-    @include border($width:400px);
-    background-color: variables.$color-gray-lighter;
-    padding:6px 5px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-    gap:5px;
-    .search_box{
-        border:none;
-        color: variables.$color-text-gray-light;
-        background-color: variables.$color-gray-lighter;
-        &::placeholder{
-            color:variables.$color-text-gray-light;
-            font-weight: bolder;
-        }
-    }
+
+
+
     
-}
-
-
-    .btn{
-        @include button($padding: 12px 25px);
-        font-size: variables.$font-size-14;
-        font-weight: bold;
-    }
