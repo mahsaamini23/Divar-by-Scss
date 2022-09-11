@@ -16,6 +16,14 @@ body{
     border-radius: 5px;
     width: $width;
 }
+@mixin borderBottom(){
+    border-bottom: {
+        width: 1px;
+        color:variables.$color-gray-light;
+        style: solid;
+    };
+    
+}
 @mixin button($padding:10px 10px){
     color:variables.$color-white;
     background-color: variables.$color-primary;
@@ -122,6 +130,38 @@ body{
         @include button($padding: 12px 25px);
         font-size: variables.$font-size-14;
         font-weight: bold;
+    }
+}
+main{
+    .sidebar{
+        position:absolute;
+        top:100px;
+        right:0;
+        .container_menu{
+            @include borderBottom;
+            padding-left: 30px;
+            margin: 0 15px;
+
+        }
+    }
+}
+.menu{
+    padding-right: 20px;
+    .header_item{
+        margin-bottom: 15px;
+        color:variables.$color-text-black !important;
+        margin-block-start: 0;
+    }
+
+    .menu_item{
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap:10px;
+        line-height: 10px;
+        font-size: variables.$font-size-14;
+        color:variables.$color-text-gray;
+
     }
 }
 
