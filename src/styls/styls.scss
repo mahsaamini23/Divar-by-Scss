@@ -1,5 +1,5 @@
 @use "variables";
-// @use "mixin";
+@use "mixinsass" as Styles;
 @font-face {
     font-family: "iranSans";
     src: url(../accets/fonts/AIranianSans.ttf) format('woff');
@@ -11,238 +11,199 @@ body{
     font-family: 'iranSans';
 }
 
-@mixin border($width:445px){
-    border:1px solid variables.$color-gray-light;
-    border-radius: 5px;
-    width: $width;
-}
-@mixin borderBottom(){
-    border-bottom: {
-        width: 1px;
-        color:variables.$color-gray-light;
-        style: solid;
-    }; 
-}
-@mixin style($justify-content:flex-start , $align-items:baseline){
-    display:flex;
-    justify-content: $justify-content;
-    align-items: $align-items;
-}
-@mixin searchBox($width:200px , $background-color:variables.$color-gray-lighter){
-    width:$width;
-    border:none;
-    color: variables.$color-text-gray-light;
-    background-color: $background-color;
-    &::placeholder{
-        color:variables.$color-text-gray-light;
-        font-weight: bolder;
-    }
-}
-@mixin button($padding:10px 10px){
-    color:variables.$color-white;
-    background-color: variables.$color-primary;
-    padding:$padding;
-    border:none;
-    border-radius: 5px;
-}
-@mixin btn(){
-    border:none;
-    background-color: variables.$color-white;
-    color:variables.$color-text-gray;
-}
-@mixin link($fontSize:14px){
-    text-decoration: none;
-    color:variables.$color-text-gray;
-    font-size:$fontSize ;
-}
-
 .nav{
+    @include Styles.display;
     width:100%;
-    display:flex;
-    align-content: center;
-    align-items: baseline;
-    padding: 12px 0  8px 0 ;
-    border-bottom: 1.5px solid variables.$color-gray-light;
     background-color: variables.$color-white;
+    padding: 10px 0  4px 0 ;
+    box-shadow: 0 1px 2px 0 rgb(0, 0, 0, 12%);
     position:fixed;
     top: 0;
+    z-index: 99;
     .logo_box{
         display: flex;
         align-self: center;
         margin:0 25px;
         .logo{
-            width:50px;
+            width:45px;
             height:45px;  
-            padding:0 15px; 
+            padding:0 5px 0 15px; 
         }
         .line{
             align-self: center;
-            width: 1px;
-            height: 25px;
-            background-color: variables.$color-gray-light;
+            width: .5px;
+            height: 22px;
+            background-color:variables.$color-gray-light;
         }
     }
     .ml{
-        margin-left: 45px !important;
+        margin-left: 35px !important;
     }
     .container_icon{
-        @include style;
+        @include Styles.display;
         gap:8px;
-        margin-left: 35px;
+        margin-left: 25px;
         .name{
-            font-size: variables.$font-size-14;
-            color:variables.$color-text-gray;
+            width: fit-content;
+            font-size: variables.$font-size-12;
+            color:variables.$color-text-black;
         }
     }
     .categories_menu{
-        @include btn;
-        display: flex;
+        @include Styles.btn;
+        @include Styles.display($justify-content:space-between, $align-items:center);
         align-content: space-between;
-        justify-content: center;
-        align-items: center;
         margin-left: 15px;
+        font-size: variables.$font-size-12;
+
         .categories{
             font-family: "iranSans";
-            font-size: variables.$font-size-14;
-            width:55px;
-            padding-left: 10px;
+            padding-left: 5px;
         }
     }
-
+    
     
     .container_search_box{
-        @include border($width:450px);
+        @include Styles.border($width:415px);
         background-color: variables.$color-gray-lighter;
-        padding:11px;
+        padding:9px 10px;
         display: flex;
         justify-content: flex-start;
         align-items: baseline;
         gap:15px;
-        margin-left: 155px;
+        margin-left: 145px;
         border: none;
         .search_box{
-            @include searchBox;
+            @include Styles.searchBox;
         }
     }
     .support{
         .support_link{
-            @include link;
+            @include Styles.link;
         }
         margin-left: 35px;
     }
     .btn{
-        @include button($padding: 12px 25px);
+        @include Styles.button($padding: 10px 20px);
         font-size: variables.$font-size-14;
         font-weight: bold;
     }
 }
+
+
+
+
+
+
 main{
+    @include Styles.display($justify-content:flex-end);
+    padding-left:15px;
+    margin-left: 10px;
+    // width:100%;
     .sidebar{
-        position:absolute;
-        top:100px;
-        right:0;
+        @include Styles.display;
+        width:20%;
+        flex-direction: column;
+        position: absolute;
+        top:90px;
+        right: 0;
         .container_menu{
-            @include borderBottom;
+            @include Styles.borderBottom(170px);
             padding-left: 30px;
             margin: 0 15px;
-
+        }
+    }
+    .container{
+        margin-top: 90px;
+        .container_text{
+            display: flex;
+            justify-content: flex-end;
+            color:variables.$color-text-black;
+            font-size: variables.$font-size-10;
+            border-bottom: 1px solid variables.$color-gray-light;
+            padding-bottom: 10px;
+        }
+        .container_cards{
+            display:grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap:15px;
         }
     }
 }
 .menu{
-    padding-right: 20px;
+    padding-right:  5px;
     .header_item{
         margin-bottom: 15px;
         color:variables.$color-text-black !important;
-        margin-block-start: 0;
     }
 
     .menu_item{
-        @include style;
+        @include Styles.display;
         gap:10px;
         line-height: 10px;
-        font-size: variables.$font-size-14;
+        font-size: variables.$font-size-12;
         color:variables.$color-text-gray;
     }
 }
 
 .item_details{
-    @include style;
-    @include borderBottom();
-    flex-direction: column;
-    padding:15px 0  20px 0;
+    @include Styles.display;
+    @include Styles.borderBottom($width:200px);
     gap:10px;
-    
-    .icon_details{
-        @include style;
-        gap:5px;
-        font-size: variables.$font-size-12;
-        color:variables.$color-text-black;
-    }
-    .search_details{
-        @include style;
-        @include border($width:200px);
-        gap:5px;
-        justify-content: center;
-        background-color: variables.$color-white;
-        padding:5px 0px;
-        color:variables.$color-text-gray;
-        .search_place{
-            @include searchBox($width:150px, $background-color:variables.$color-white);
-        }
-    }
-}
-
-.item_minAndMix{
-    @include style;
-    gap:10px;
-    color:variables.$color-text-gray;
+    margin:0 15px;
+    padding:5px 0;
     font-size: variables.$font-size-12;
-    .minAndMix{
-        @include style($align-items:center);
-        flex-direction: column;
-        .search_minAndMix{
-            @include style($justify-content:space-between);
-            .search_details{
-                @include searchBox($width:100px);
-            }
-        }
-        
-    }
-
+    color:variables.$color-text-black;
 }
-
+.about_divar{
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap:10px;
+    font-size: variables.$font-size-9;
+    color:variables.$color-text-gray;
+    padding:10px 15px;
+}
+.social_networks{
+    display:flex;
+    gap: 30px;
+    padding-right: 30px;
+    color:variables.$color-text-gray;
+}
 
 .card{
-    @include border;
-    padding: 8px;
+    @include Styles.border;
+    width:270px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     .image_card{
         width:136px;
         height:136px;
+        border-radius: 5px;
     }
     .card_content{
-        display: flex;
+        @include Styles.display($justify-content:space-between);
         flex-direction: column;
-        justify-content: space-between;
         .title_card{
+            font-family: "iranSans";
             color: variables.$color-text-black;
-            font-size: variables.$font-size-16;
+            font-size: variables.$font-size-14;
             font-family: Arial, Helvetica, sans-serif;
+            padding-top: 5px;
         }
         .card-details{
-            display: flex;
+            @include Styles.display($justify-content:flex-end);
             flex-direction: column;
-            justify-content: flex-end;
             gap:15px;
+            padding-bottom: 5px;
             .price_card{
                 color: variables.$color-text-gray;
-                font-size: variables.$font-size-14;
+                font-size: variables.$font-size-12;
             }
             .text_card{
                 color: variables.$color-text-gray;
-                font-size: variables.$font-size-12;
+                font-size: variables.$font-size-10;
             }
         }
     }

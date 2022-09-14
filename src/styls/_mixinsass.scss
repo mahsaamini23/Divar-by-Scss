@@ -1,0 +1,51 @@
+@use "variables";
+
+
+@mixin border($width:445px){
+    border:1px solid variables.$color-gray-light;
+    border-radius: 5px;
+    width: $width;
+}
+
+@mixin borderBottom($width:120px){
+    border-bottom:1px solid variables.$color-gray-light;
+    width:$width;
+    
+}
+
+@mixin display($justify-content:flex-start , $align-items:baseline){
+    display:flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin searchBox($width:200px , $background-color:variables.$color-gray-lighter){
+    width:$width;
+    border:none;
+    color: variables.$color-text-black-light;
+    background-color: $background-color;
+    &::placeholder{
+        color:variables.$color-text-gray-light;
+        font-weight: bolder;
+    }
+}
+
+@mixin button($padding:10px 10px){
+    color:variables.$color-white;
+    background-color: variables.$color-primary;
+    padding:$padding;
+    border:none;
+    border-radius: 5px;
+}
+
+@mixin btn(){
+    border:none;
+    background-color: variables.$color-white;
+    color:variables.$color-text-gray;
+}
+
+@mixin link($fontSize:14px){
+    text-decoration: none;
+    color:variables.$color-text-gray;
+    font-size:$fontSize ;
+}
